@@ -1,36 +1,41 @@
 # Mistari ya Roho
 
-Mistari ya Biblia Takatifu (Kiswahili) kwa mada za matunda ya Roho: upendo, furaha, amani, uvumilivu, utu wema, uaminifu, upole, kiasi, imani, tumaini, usalama.
+Programu ndogo ya wavuti inayokuonyesha mistari ya Biblia kwa mada 11: upendo, furaha, amani, uvumilivu, utu wema, uaminifu, upole, kiasi, imani, tumaini na usalama.
 
-- Mstari mpya hufunguka kila **dakika 20** kwa kila mada.
-- Kitufe cha **Nakili** na **Tuma SMS** kwa kila mstari.
-- Mistari iliyopita inabaki kwenye orodha ya historia.
+## Vipengele
+- Mistari 3 ya kuanzia kwa kila mada (jumla ya 33).
+- Mstari unaofuata hufunguka kila dakika 20 kwa kila mada.
+- Nakili mstari au fungua ujumbe wa SMS.
+- Historia ya mistari iliyofunguliwa kwa mada husika.
+- Mitindo tofauti ya herufi.
+- Hufanya kazi bila intaneti baada ya kupakua mradi; hakuna server au usakinishaji wa maktaba unaohitajika.
 
-## Hatua za kuanza
+## Jinsi ya kuendesha
+1. Fungua folda `mistari-ya-roho`.
+2. Fungua `index.html` kwenye kivinjari cha kisasa (Chrome, Edge, Firefox au Safari).
 
-1. Pata faili la Biblia Takatifu la Kiswahili lenye ruhusa ya kutumia (mfano toleo la domain ya umma au lenye leseni). Liweke kama `biblia.tsv` (UTF-8), kila mstari:
+Unaweza pia kuendesha seva rahisi ya ndani kwa Python ukiwa ndani ya folda ya mradi:
 
-   ```
-   Kitabu<TAB>Sura<TAB>Mstari<TAB>Maandishi
-   ```
+```bash
+python -m http.server 8000
+```
 
-2. Endesha:
+Kisha fungua `http://localhost:8000`.
 
-   ```
-   python tools/build_verses.py biblia.tsv
-   ```
+## Kuhusu maandiko na leseni
+Mradi huu unatumia uteuzi wa mistari ya Kiswahili unaohusishwa na **Swahili Unlocked Literal Bible (SWHULB)**, tafsiri ya Door43 World Missions Community, © 2019, chini ya **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
 
-   Hii inaandika `data/verses.js` na kuonyesha idadi ya mistari kwa kila mada.
+Chanzo na maelezo ya leseni: https://ebible.org/details.php?id=swhulb
 
-3. Fungua `index.html` kwenye kivinjari (simu au kompyuta).
+Tafsiri hii ina maneno na mtindo ambao unaweza kutofautiana na matoleo mengine ya *Biblia Takatifu* yanayotumika Tanzania. Baadhi ya maandishi yamechaguliwa au kufupishwa ili yafae katika programu; hakiki maneno na rejea katika toleo la Biblia unalotumia kabla ya matumizi rasmi ya uchapishaji au ibada. Mradi huu haujaidhinishwa na Door43.
 
-## Chaguo
+Kwa kuwa maandishi ya Biblia yanasambazwa chini ya CC BY-SA 4.0, usambazaji wa matoleo yaliyobadilishwa ya maandishi hayo lazima ufuate masharti ya leseni hiyo, ikiwemo kutoa sifa na kutumia leseni sawa kwa mchango unaosambazwa.
 
-- `--limit 1000` idadi ya juu kwa kila mada (chaguo-msingi 1000)
-- `--maxlen 320` urefu wa juu wa mstari, ili ufae SMS
+## Kubadilisha au kuongeza mistari
+Faili la data ni `data/verses.js`. Muundo wa kila mstari ni:
 
-## Kumbuka
+```js
+{ "r": "Yohana 3:16", "t": "Maandishi ya mstari hapa" }
+```
 
-- Script huchagua mistari kwa kutafuta maneno ya mada. Baadhi ya mada zinaweza kupata chini ya 1000 kwa sababu Biblia haina mistari mingi hivyo. Idadi halisi huonyeshwa.
-- Pitia mistari kabla ya kutuma, kwa sababu utafutaji wa maneno hauelewi muktadha kila mara.
-- Muda wa kuanza kila mada huhifadhiwa kwenye kivinjari (localStorage). Ukifuta data ya kivinjari, hesabu huanza upya.
+Kila mada ina orodha ya mistari. Ongeza vipengee kwenye orodha ya mada husika ili kuongeza mistari.
