@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mistari ya Roho</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Mistari ya Roho</h1>
+  <p>Biblia Takatifu · mstari mpya kila dakika 20</p>
+</header>
+
+<nav id="themes" aria-label="Mada"></nav>
+
+<main>
+  <section id="setup" class="card hidden">
+    <h2>Mistari bado haijapakiwa</h2>
+    <p>Endesha: <code>python tools/build_verses.py biblia.tsv</code> kisha pakia upya ukurasa. Angalia README.md.</p>
+  </section>
+
+  <section id="current" class="card hidden">
+    <div class="label" id="themeLabel"></div>
+    <blockquote id="verseText"></blockquote>
+    <div class="ref" id="verseRef"></div>
+    <label class="stylePick">Mtindo wa herufi:
+      <select id="styleSel"></select>
+    </label>
+    <div class="actions">
+      <button id="copyBtn">Nakili</button>
+      <a id="smsBtn" class="btn" href="#">Tuma SMS</a>
+    </div>
+    <div class="timer">Mstari unaofuata baada ya: <b id="countdown">--:--</b></div>
+    <div class="timer small" id="progress"></div>
+  </section>
+
+  <section id="historyBox" class="hidden">
+    <h3>Mistari iliyofunguliwa</h3>
+    <div id="history"></div>
+  </section>
+</main>
+
+<div id="toast" class="toast">Imenakiliwa</div>
+
+<script src="data/verses.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

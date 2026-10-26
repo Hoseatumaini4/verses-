@@ -1,0 +1,29 @@
+:root{--bg:#f6f3ec;--card:#fff;--ink:#222;--muted:#6b6b6b;--accent:#1f6f4a;--line:#e3ded2}
+@media (prefers-color-scheme:dark){:root{--bg:#15191a;--card:#1f2527;--ink:#eee;--muted:#a0a8a8;--accent:#4cc38a;--line:#2f3739}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{text-align:center;padding:24px 16px 8px}
+header h1{margin:0;font-size:1.6rem;color:var(--accent)}
+header p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px 16px}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:.9rem;cursor:pointer}
+nav button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{max-width:640px;margin:0 auto;padding:8px 16px 48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:8px}
+.label{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+blockquote{margin:12px 0 8px;font-size:1.35rem;line-height:1.6;font-family:Georgia,"Times New Roman",serif}
+.stylePick{display:block;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.stylePick select{margin-left:6px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:.9rem}
+.ref{font-weight:700;color:var(--muted)}
+.actions{display:flex;gap:10px;margin-top:16px}
+button,.btn{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}
+.timer{margin-top:16px;color:var(--muted);font-size:.9rem}
+.timer.small{margin-top:4px;font-size:.8rem}
+h3{margin:28px 0 8px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+.item .ref{font-size:.85rem}
+.item button{padding:6px 12px;font-size:.85rem;margin-top:8px}
+.hidden{display:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+code{background:var(--line);padding:2px 6px;border-radius:4px}
