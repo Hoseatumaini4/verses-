@@ -1,41 +1,45 @@
 # Mistari ya Roho
 
-Programu ndogo ya wavuti inayokuonyesha mistari ya Biblia kwa mada 11: upendo, furaha, amani, uvumilivu, utu wema, uaminifu, upole, kiasi, imani, tumaini na usalama.
+PWA ya mistari ya Biblia Takatifu (Kiswahili) ya **kutia moyo, kushukuru, kubariki na kufariji**, pamoja na matunda ya Roho. Inasakinishika kwenye simu, inafanya kazi **bila mtandao**, na unaweza kunakili au kutuma mistari kwa **SMS/WhatsApp** kwa herufi nzuri za kiroho.
 
 ## Vipengele
-- Mistari 3 ya kuanzia kwa kila mada (jumla ya 33).
-- Mstari unaofuata hufunguka kila dakika 20 kwa kila mada.
-- Nakili mstari au fungua ujumbe wa SMS.
-- Historia ya mistari iliyofunguliwa kwa mada husika.
-- Mitindo tofauti ya herufi.
-- Hufanya kazi bila intaneti baada ya kupakua mradi; hakuna server au usakinishaji wa maktaba unaohitajika.
+- Mada 15: Kutia moyo, Shukrani, Baraka, Faraja, Upendo, Furaha, Amani, Uvumilivu, Utu wema, Uaminifu, Upole, Kiasi, Imani, Tumaini, Usalama.
+- Mstari mpya hufunguka kila: dakika 20, saa 1, 3, 6, 12, siku 1, wiki 1, mwezi 1, miezi 3, miezi 6, au mwaka 1. Mabadiliko ya muda huhifadhi mistari uliyokwisha kufungua.
+- Herufi za mtindo (Mkono, Nzito iliyoinama, Kale, Nzito, Nzito safi, Kawaida), salamu na jina lako hiari, pambo la msalaba, na onyesho la ujumbe kabla ya kutuma.
+- Vitufe: Nakili, SMS, WhatsApp, Shiriki.
+- Mwonekano wa usiku/mchana, fonti zilizofungwa ndani (Cormorant Garamond na Inter), hakuna huduma za nje.
 
-## Jinsi ya kuendesha
-1. Fungua folda `mistari-ya-roho`.
-2. Fungua `index.html` kwenye kivinjari cha kisasa (Chrome, Edge, Firefox au Safari).
+## Kuweka kwenye GitHub na Vercel
+1. Weka folda hii nzima kwenye repo ya GitHub.
+2. Vercel: **Add New Project**, chagua repo. Mipangilio tayari ipo kwenye `vercel.json` (hakuna build, folda ya kutoa ni `public`). Bonyeza **Deploy**.
+3. Fungua kiungo kwenye simu: Android Chrome huonyesha **Sakinisha**; iPhone Safari: **Shiriki → Ongeza kwenye Skrini ya Nyumbani**. Baada ya ufunguzi wa kwanza, programu inafanya kazi bila mtandao.
 
-Unaweza pia kuendesha seva rahisi ya ndani kwa Python ukiwa ndani ya folda ya mradi:
+PWA inahitaji HTTPS, ambayo Vercel hutoa moja kwa moja.
 
-```bash
-python -m http.server 8000
+## Kusasisha
+Ukibadilisha faili zozote ndani ya `public/`, badilisha `VERSION` kwenye `public/sw.js` (mfano `v2`) ili simu zipate toleo jipya.
+
+## Muundo
 ```
-
-Kisha fungua `http://localhost:8000`.
-
-## Kuhusu maandiko na leseni
-Mradi huu unatumia uteuzi wa mistari ya Kiswahili unaohusishwa na **Swahili Unlocked Literal Bible (SWHULB)**, tafsiri ya Door43 World Missions Community, © 2019, chini ya **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
-
-Chanzo na maelezo ya leseni: https://ebible.org/details.php?id=swhulb
-
-Tafsiri hii ina maneno na mtindo ambao unaweza kutofautiana na matoleo mengine ya *Biblia Takatifu* yanayotumika Tanzania. Baadhi ya maandishi yamechaguliwa au kufupishwa ili yafae katika programu; hakiki maneno na rejea katika toleo la Biblia unalotumia kabla ya matumizi rasmi ya uchapishaji au ibada. Mradi huu haujaidhinishwa na Door43.
-
-Kwa kuwa maandishi ya Biblia yanasambazwa chini ya CC BY-SA 4.0, usambazaji wa matoleo yaliyobadilishwa ya maandishi hayo lazima ufuate masharti ya leseni hiyo, ikiwemo kutoa sifa na kutumia leseni sawa kwa mchango unaosambazwa.
-
-## Kubadilisha au kuongeza mistari
-Faili la data ni `data/verses.js`. Muundo wa kila mstari ni:
-
-```js
-{ "r": "Yohana 3:16", "t": "Maandishi ya mstari hapa" }
+public/            tovuti (inayotolewa na Vercel)
+  index.html  css/app.css  js/app.js  sw.js  manifest.webmanifest
+  data/verses.js   mistari (imetengenezwa)
+  fonts/  icons/
+tools/
+  build_verses.py  hutengeneza public/data/verses.js kutoka data-src/biblia.tsv
+  curated.py       marejeo ya mistari iliyochaguliwa kwa mkono
+  make_icons.mjs   hutengeneza aikoni (inahitaji playwright)
+data-src/biblia.tsv  Biblia (Kitabu, Sura, Mstari, Maandishi)
 ```
+Kutengeneza mistari upya: `python3 tools/build_verses.py data-src/biblia.tsv` (chaguo: `--limit`, `--maxlen`, `--loose`).
 
-Kila mada ina orodha ya mistari. Ongeza vipengee kwenye orodha ya mada husika ili kuongeza mistari.
+## Idadi ya mistari
+Kutia moyo 85 · Shukrani 101 · Baraka 244 · Faraja 108 · Upendo 549 · Furaha 435 · Amani 236 · Uvumilivu 109 · Utu wema 357 · Uaminifu 108 · Upole 79 · Kiasi 335 · Imani 375 · Tumaini 216 · Usalama 504.
+
+Biblia haina mistari 1000 yenye ubora kwa kila mada. Mistari ya kwanza ya kila mada ni ile maarufu iliyochaguliwa kwa mkono; iliyobaki ilitafutwa kwa maneno ya mada, kwa hiyo soma kabla ya kutuma.
+
+## SMS
+Herufi za mtindo ni Unicode na kila moja huchukua nafasi mbili, kwa hiyo SMS moja hubeba takriban herufi 35 tu; programu inaonyesha makadirio ya idadi ya SMS. Kwa ujumbe mfupi chagua **Kawaida** (herufi 160 kwa SMS). WhatsApp haina kikomo hicho.
+
+## Chanzo na leseni ya maandishi
+Maandishi ya Biblia yametoka https://github.com/shemmjunior/swahili-bible-edition (leseni MIT kwa repo; inaonekana kuwa Swahili Union Version). Repo haitaji hakimiliki ya maandishi yenyewe, kwa hiyo hakikisha kabla ya kusambaza hadharani. Fonti: Cormorant Garamond na Inter (SIL OFL), leseni ndani ya `public/fonts/`.

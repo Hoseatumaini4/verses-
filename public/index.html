@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mistari ya Roho · Biblia Takatifu</title>
+<meta name="description" content="Mistari ya Biblia Takatifu ya kutia moyo, kushukuru na kubariki. Nakili au tuma kwa SMS kwa herufi nzuri za kiroho. Inafanya kazi bila mtandao.">
+<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f1e5" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mistari ya Roho">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="Mistari ya Roho">
+<meta property="og:description" content="Mistari ya Biblia Takatifu ya kutia moyo, kushukuru na kubariki.">
+<meta property="og:type" content="website">
+<link rel="preload" href="fonts/cormorant-garamond-latin-600-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"><i class="glow g1"></i><i class="glow g2"></i><i class="stars"></i></div>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e3b0"/><stop offset="1" stop-color="#c99a3e"/></linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#gm)" stroke-linecap="round" stroke-width="2" opacity=".55">
+          <path d="M32 3v8M32 53v8M3 32h8M53 32h8M12 12l5 5M47 47l5 5M52 12l-5 5M17 47l-5 5"/>
+        </g>
+        <path d="M28 14h8v14h14v8H36v16h-8V36H14v-8h14z" fill="url(#gm)"/>
+      </svg>
+      <div>
+        <h1>Mistari ya Roho</h1>
+        <p>Biblia Takatifu</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="installBtn" class="pill hidden" type="button">Sakinisha</button>
+      <button id="modeBtn" class="icon-btn" type="button" aria-label="Badilisha mwonekano (usiku/mchana)" title="Usiku / Mchana">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.5 0-.9-.1-1.3A6.5 6.5 0 0 1 13.3 3.1C12.9 3 12.5 3 12 3z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="iosTip" class="tip hidden" role="note">
+    Kusakinisha kwenye iPhone: bonyeza <b>Shiriki</b> kisha <b>Ongeza kwenye Skrini ya Nyumbani</b>.
+    <button id="iosTipClose" type="button" aria-label="Funga">×</button>
+  </div>
+
+  <nav id="themes" class="chips" aria-label="Mada za mistari"></nav>
+
+  <main>
+    <section id="setup" class="card hidden">
+      <h2>Mistari bado haijapakiwa</h2>
+      <p>Endesha <code>python3 tools/build_verses.py data-src/biblia.tsv</code> kisha pakia upya ukurasa.</p>
+    </section>
+
+    <article id="verseCard" class="card verse-card hidden" aria-live="polite">
+      <div class="card-head">
+        <span id="themeLabel" class="eyebrow"></span>
+        <span id="counter" class="count"></span>
+      </div>
+
+      <blockquote id="verseText" class="verse"></blockquote>
+      <div class="orn" aria-hidden="true"><span></span><b>✦</b><span></span></div>
+      <p id="verseRef" class="ref"></p>
+
+      <div class="browse">
+        <button id="prevBtn" class="icon-btn" type="button" aria-label="Mstari uliotangulia">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="latestBtn" class="pill small hidden" type="button">Nenda mstari mpya</button>
+        <button id="nextBtn" class="icon-btn" type="button" aria-label="Mstari unaofuata">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="actions">
+        <button id="copyBtn" class="btn primary" type="button">Nakili</button>
+        <a id="smsBtn" class="btn" href="#">SMS</a>
+        <a id="waBtn" class="btn" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <button id="shareBtn" class="btn hidden" type="button">Shiriki</button>
+      </div>
+    </article>
+
+    <section id="composer" class="card hidden">
+      <h2 class="h">Herufi na ujumbe</h2>
+      <div id="styles" class="styles" role="radiogroup" aria-label="Mtindo wa herufi"></div>
+
+      <details class="personal">
+        <summary>Binafsisha ujumbe</summary>
+        <label>Salamu (hiari)
+          <input id="greeting" type="text" maxlength="60" placeholder="Mfano: Habari yako Mama," autocomplete="off">
+        </label>
+        <label>Jina lako (hiari)
+          <input id="signoff" type="text" maxlength="40" placeholder="Mfano: Tumaini" autocomplete="off">
+        </label>
+        <label class="check"><input id="adorn" type="checkbox"> <span>Weka pambo la msalaba ✝</span></label>
+      </details>
+
+      <div class="preview-label">Hivi ndivyo ujumbe utakavyotumwa</div>
+      <pre id="preview" class="preview"></pre>
+      <p id="smsNote" class="note"></p>
+    </section>
+
+    <section id="timerCard" class="card hidden">
+      <div class="timer-row">
+        <div>
+          <div class="eyebrow">Mstari unaofuata baada ya</div>
+          <div id="countdown" class="countdown">--:--</div>
+        </div>
+        <label class="interval">Mstari mpya kila
+          <select id="interval"></select>
+        </label>
+      </div>
+      <div class="bar" role="progressbar" aria-label="Muda hadi mstari unaofuata" aria-valuemin="0" aria-valuemax="100"><i id="barFill"></i></div>
+      <div class="timer-foot">
+        <span id="unlockInfo"></span>
+        <button id="resetBtn" class="link" type="button">Anza upya mada hii</button>
+      </div>
+    </section>
+
+    <section id="historyBox" class="hidden">
+      <h2 class="h">Mistari iliyofunguliwa</h2>
+      <div id="history"></div>
+      <button id="moreBtn" class="pill hidden" type="button">Onyesha zaidi</button>
+    </section>
+  </main>
+
+  <footer>
+    <span id="offlineBadge" class="badge hidden">Inafanya kazi bila mtandao</span>
+    <p>Biblia Takatifu (Swahili Union Version). Soma mstari kabla ya kutuma.</p>
+  </footer>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:24px;text-align:center">Washa JavaScript ili kutumia programu hii.</p></noscript>
+
+<script src="data/verses.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

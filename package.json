@@ -1,0 +1,12 @@
+{
+  "name": "mistari-ya-roho",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mistari ya Roho: PWA ya mistari ya Biblia Takatifu (Kiswahili) ya kutia moyo, kushukuru na kubariki.",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 -d public",
+    "build:data": "python3 tools/build_verses.py data-src/biblia.tsv",
+    "build:icons": "node tools/make_icons.mjs"
+  },
+  "license": "UNLICENSED"
+}
